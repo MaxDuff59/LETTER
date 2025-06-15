@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+        }
+
+        .envelope-container {
+            position: relative;
+            width: 400px;
+            height: 280px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .envelope-container:hover {
+            transform: scale(1.05);
+        }
+
+        .envelope {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #f4f4f4;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: #e8e8e8;
+            border-bottom: 2px solid #ddd;
+            transform-origin: top center;
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 3;
+            border-radius: 5px 5px 0 0;
+            transform: rotateX(0deg);
+        }
+
+        .envelope-flap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 200px solid transparent;
+            border-right: 200px solid transparent;
+            border-top: 140px solid #d4d4d4;
+        }
+
+        .letter {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: calc(100% - 50px);
+            height: calc(100% - 50px);
+            background: #fff;
+            border-radius: 3px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.8s ease 0.3s;
+            z-index: 2;
+            overflow-y: auto;
+        }
+
+        .letter-content {
+            text-align: center;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .letter h2 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: normal;
+        }
+
+        .letter p {
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .signature {
+            margin-top: 15px;
+            font-style: italic;
+            color: #e74c3c;
+            font-size: 14px;
+        }
+
+        .heart {
+            position: absolute;
+            color: #e74c3c;
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .heart1 { top: 10%; left: 10%; }
+        .heart2 { top: 20%; right: 15%; }
+        .heart3 { bottom: 30%; left: 20%; }
+        .heart4 { bottom: 10%; right: 10%; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        .click-hint {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #666;
+            font-size: 14px;
+            animation: pulse 2s infinite;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .reset-btn {
+            position: absolute;
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            background: #c0392b;
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .envelope-name {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Georgia', serif;
+            font-size: 24px;
+            color: #333;
+            z-index: 4;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        @keyframes sparkleFloat {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-50px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(0);
+            }
+        }
+    </style>
+</head>
+<body>
+            <div class="envelope-container" onclick="openEnvelope()">
+        <div class="envelope" id="envelope">
+            <div class="envelope-flap" id="flap"></div>
+            <div class="envelope-name" id="envelopeName">Shany ❤️</div>
+            <div class="letter" id="letter">
+                <div class="letter-content">
+                    <h2>My Dearest Love</h2>
+                    <p>Every moment with you feels like a beautiful dream that I never want to wake up from.</p>
+                    <p>Your smile lights up my world, and your love fills my heart with endless joy.</p>
+                    <p>I am grateful for every day we share together, and I look forward to all the adventures that await us.</p>
+                    <div class="signature">Forever yours ❤️</div>
+                </div>
+            </div>
+            <div class="heart heart1" id="heart1">♥</div>
+            <div class="heart heart2" id="heart2">♥</div>
+            <div class="heart heart3" id="heart3">♥</div>
+            <div class="heart heart4" id="heart4">♥</div>
+        </div>
+        <div class="click-hint" id="clickHint">Click to open</div>
+        <button class="reset-btn" id="resetBtn" onclick="resetEnvelope(event)">Close Letter</button>
+    </div>
+
+    <script>
+        let isOpened = false;
+
+        function openEnvelope() {
+            if (isOpened) return;
+            
+            isOpened = true;
+            const flap = document.getElementById('flap');
+            const letter = document.getElementById('letter');
+            const hearts = document.querySelectorAll('.heart');
+            const clickHint = document.getElementById('clickHint');
+            const resetBtn = document.getElementById('resetBtn');
+            const envelopeName = document.getElementById('envelopeName');
+
+            // Open animation
+            flap.style.transform = 'rotateX(-180deg)';
+            envelopeName.style.opacity = '0';
+            
+            setTimeout(() => {
+                letter.style.transform = 'translateY(0)';
+                letter.style.opacity = '1';
+            }, 300);
+
+            setTimeout(() => {
+                hearts.forEach((heart, index) => {
+                    heart.style.opacity = '1';
+                    heart.style.animation = `float 3s ease-in-out infinite ${index * 0.5}s`;
+                });
+                clickHint.style.opacity = '0';
+                resetBtn.style.opacity = '1';
+            }, 800);
+        }
+
+        function resetEnvelope(event) {
+            event.stopPropagation();
+            if (!isOpened) return;
+
+            const flap = document.getElementById('flap');
+            const letter = document.getElementById('letter');
+            const hearts = document.querySelectorAll('.heart');
+            const clickHint = document.getElementById('clickHint');
+            const resetBtn = document.getElementById('resetBtn');
+            const envelopeName = document.getElementById('envelopeName');
+
+            // Closing animation
+            hearts.forEach(heart => {
+                heart.style.opacity = '0';
+                heart.style.animation = 'none';
+            });
+
+            resetBtn.style.opacity = '0';
+
+            setTimeout(() => {
+                letter.style.transform = 'translateY(20px)';
+                letter.style.opacity = '0';
+            }, 200);
+
+            setTimeout(() => {
+                flap.style.transform = 'rotateX(0deg)';
+            }, 400);
+
+            setTimeout(() => {
+                clickHint.style.opacity = '1';
+                envelopeName.style.opacity = '1';
+                isOpened = false;
+            }, 800);
+        }
+
+        // Sparkle effect
+        document.addEventListener('DOMContentLoaded', function() {
+            function createSparkle() {
+                const sparkle = document.createElement('div');
+                sparkle.innerHTML = '✨';
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = Math.random() * window.innerWidth + 'px';
+                sparkle.style.top = Math.random() * window.innerHeight + 'px';
+                sparkle.style.fontSize = '12px';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.animation = 'sparkleFloat 3s ease-out forwards';
+                sparkle.style.zIndex = '1000';
+                
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 3000);
+            }
+            
+            setInterval(createSparkle, 2000);
+        });
+    </script>
+</body>
+</html>
