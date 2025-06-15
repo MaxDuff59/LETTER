@@ -19,6 +19,233 @@
             align-items: center;
             font-family: 'Georgia', serif;
             overflow: hidden;
+            padding: 20px;
+        }
+
+        .main-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 100%;
+        }
+
+        .bouquet-container {
+            position: relative;
+            width: 200px;
+            height: 300px;
+            transform: rotate(-15deg);
+            opacity: 0;
+            animation: fadeInBouquet 2s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeInBouquet {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .bouquet-stem {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 120px;
+            background: linear-gradient(to bottom, #228B22, #006400);
+            border-radius: 6px;
+        }
+
+        .bouquet-wrap {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 60px;
+            background: linear-gradient(45deg, #DDA0DD, #BA55D3);
+            border-radius: 0 0 20px 20px;
+            opacity: 0.9;
+        }
+
+        .flower {
+            position: absolute;
+            animation: gentleSway 4s ease-in-out infinite;
+        }
+
+        .flower1 {
+            top: 20px;
+            left: 40px;
+            animation-delay: 0s;
+        }
+
+        .flower2 {
+            top: 35px;
+            left: 70px;
+            animation-delay: 0.8s;
+        }
+
+        .flower3 {
+            top: 10px;
+            left: 100px;
+            animation-delay: 1.6s;
+        }
+
+        .flower4 {
+            top: 50px;
+            left: 120px;
+            animation-delay: 2.4s;
+        }
+
+        .flower5 {
+            top: 30px;
+            left: 150px;
+            animation-delay: 3.2s;
+        }
+
+        @keyframes gentleSway {
+            0%, 100% {
+                transform: rotate(0deg) scale(1);
+            }
+            25% {
+                transform: rotate(2deg) scale(1.05);
+            }
+            50% {
+                transform: rotate(0deg) scale(1);
+            }
+            75% {
+                transform: rotate(-2deg) scale(1.05);
+            }
+        }
+
+        .rose {
+            width: 35px;
+            height: 35px;
+            position: relative;
+        }
+
+        .rose-center {
+            width: 12px;
+            height: 12px;
+            background: #FF1493;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 8px rgba(255, 20, 147, 0.6);
+        }
+
+        .rose-petal {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50% 0 50% 0;
+            background: linear-gradient(45deg, #FF69B4, #FF1493);
+            top: 50%;
+            left: 50%;
+            transform-origin: bottom left;
+        }
+
+        .rose-petal:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg); }
+        .rose-petal:nth-child(2) { transform: translate(-50%, -50%) rotate(72deg); }
+        .rose-petal:nth-child(3) { transform: translate(-50%, -50%) rotate(144deg); }
+        .rose-petal:nth-child(4) { transform: translate(-50%, -50%) rotate(216deg); }
+        .rose-petal:nth-child(5) { transform: translate(-50%, -50%) rotate(288deg); }
+
+        .tulip {
+            width: 30px;
+            height: 40px;
+            position: relative;
+        }
+
+        .tulip-petal {
+            position: absolute;
+            width: 15px;
+            height: 25px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            background: linear-gradient(to bottom, #DA70D6, #9370DB);
+            top: 0;
+            left: 50%;
+            transform-origin: bottom center;
+        }
+
+        .tulip-petal:nth-child(1) { transform: translateX(-50%) rotate(-20deg); }
+        .tulip-petal:nth-child(2) { transform: translateX(-50%) rotate(0deg); }
+        .tulip-petal:nth-child(3) { transform: translateX(-50%) rotate(20deg); }
+
+        .daisy {
+            width: 32px;
+            height: 32px;
+            position: relative;
+        }
+
+        .daisy-center {
+            width: 8px;
+            height: 8px;
+            background: #FFD700;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .daisy-petal {
+            position: absolute;
+            width: 6px;
+            height: 14px;
+            background: #FFFFFF;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform-origin: bottom center;
+            box-shadow: 0 0 3px rgba(0,0,0,0.1);
+        }
+
+        .daisy-petal:nth-child(1) { transform: translate(-50%, -100%) rotate(0deg); }
+        .daisy-petal:nth-child(2) { transform: translate(-50%, -100%) rotate(45deg); }
+        .daisy-petal:nth-child(3) { transform: translate(-50%, -100%) rotate(90deg); }
+        .daisy-petal:nth-child(4) { transform: translate(-50%, -100%) rotate(135deg); }
+        .daisy-petal:nth-child(5) { transform: translate(-50%, -100%) rotate(180deg); }
+        .daisy-petal:nth-child(6) { transform: translate(-50%, -100%) rotate(225deg); }
+        .daisy-petal:nth-child(7) { transform: translate(-50%, -100%) rotate(270deg); }
+        .daisy-petal:nth-child(8) { transform: translate(-50%, -100%) rotate(315deg); }
+
+        .leaf {
+            position: absolute;
+            width: 15px;
+            height: 25px;
+            background: linear-gradient(45deg, #90EE90, #228B22);
+            border-radius: 0 100% 0 100%;
+            top: 80px;
+            animation: leafSway 3s ease-in-out infinite;
+        }
+
+        .leaf1 {
+            left: 60px;
+            transform: rotate(45deg);
+            animation-delay: 0.5s;
+        }
+
+        .leaf2 {
+            left: 90px;
+            transform: rotate(-30deg);
+            animation-delay: 1s;
+        }
+
+        .leaf3 {
+            left: 120px;
+            transform: rotate(60deg);
+            animation-delay: 1.5s;
+        }
+
+        @keyframes leafSway {
+            0%, 100% {
+                transform: rotate(var(--initial-rotation, 0deg));
+            }
+            50% {
+                transform: rotate(calc(var(--initial-rotation, 0deg) + 10deg));
+            }
         }
 
         .envelope-container {
@@ -196,43 +423,134 @@
                 transform: translateY(-100px) scale(0);
             }
         }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .bouquet-container {
+                width: 150px;
+                height: 225px;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .main-container {
+                gap: 30px;
+            }
+            
+            .bouquet-container {
+                width: 180px;
+                height: 270px;
+            }
+        }
     </style>
 </head>
 <body>
-            <div class="envelope-container" onclick="openEnvelope()">
-        <div class="envelope" id="envelope">
-            <div class="envelope-flap" id="flap"></div>
-            <div class="envelope-name" id="envelopeName">Shany ❤️</div>
-            <div class="letter" id="letter">
-                <div class="letter-content">
-                    <h2>Ma belle demoiselle,</h2>
-                    <p>Je voulais te faire une petite surprise car je suis conscient d'être souvent raleur mais je voulais également te rappeler toutes les bonnes choses que tu fais pour nous.</p>
-                    <p>Te voir sourire et heureuse me rend très fier de toi et tout ce que tu as mis en oeuvre pour vivre au mieux ce voyage.</p>
-                    <p>Tu es un exemple de joie de vivre, tu vis le moment présent comme personne. J'ai énormément d'admiration pour toi pour cela.</p>
-                    <p>Malgré la distance, je suis toujours là pour toi, je veux être ton pilier et que tu puisses compter sur moi à n'importe quel moment.</p>
-                    <p>Je pourrais énumerer bon nombre de tes qualités même si je pense que tu connais déjà la plupart.</p>
-                    <p>Ta beauté est divine, ajouté à cela un bronzage de fou et on obtient sans aucun doute la plus belle femme de l'univers.</p>
-                    <p>Je sais que tu fais au mieux pour profiter à fond de ton voyage tout en me gardant dans un coin de ta tête.
-                        Alors oui, forcément, une telle distance et un tel contexte n'est pas forcément le plus facile pour un couple.
-                        Malgré tout, je trouve que l'on s'en sort très bien. Alors oui, ce n'est pas évident tous les jours surtout au début,
-                        mais je suis ravi que l'on puisse construire une brique supplémentaire de notre merveilleux couple.
-                    </p>
-                    <p>Je ne veux pas que tu imagines que cette lettre doit t'obliger à faire plus pour moi, pas du tout. 
-                        Fais de ton mieux comme tu le fais au quotidien tout en profitant de chaque instant de ton voyage.</p>
-                    <p>Te voir sourire et heureuse me rend très fier de toi et tout ce que tu as mis en oeuvre pour vivre au mieux ce voyage.</p>
-                    <p>Te voir sourire et heureuse me rend très fier de toi et tout ce que tu as mis en oeuvre pour vivre au mieux ce voyage.</p>
-                    <p>Te voir sourire et heureuse me rend très fier de toi et tout ce que tu as mis en oeuvre pour vivre au mieux ce voyage.</p>
-                    <p>I am grateful for every day we share together, and I look forward to all the adventures that await us.</p>
-                    <div class="signature">Forever yours ❤️</div>
+    <div class="main-container">
+        <div class="bouquet-container">
+            <div class="bouquet-stem"></div>
+            <div class="bouquet-wrap"></div>
+            
+            <!-- Roses -->
+            <div class="flower flower1">
+                <div class="rose">
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-center"></div>
                 </div>
             </div>
-            <div class="heart heart1" id="heart1">♥</div>
-            <div class="heart heart2" id="heart2">♥</div>
-            <div class="heart heart3" id="heart3">♥</div>
-            <div class="heart heart4" id="heart4">♥</div>
+            
+            <!-- Tulips -->
+            <div class="flower flower2">
+                <div class="tulip">
+                    <div class="tulip-petal"></div>
+                    <div class="tulip-petal"></div>
+                    <div class="tulip-petal"></div>
+                </div>
+            </div>
+            
+            <!-- Daisy -->
+            <div class="flower flower3">
+                <div class="daisy">
+                    <div class="daisy-petal"></div>
+                    <div class="daisy-petal"></div>
+                    <div class="daisy-petal"></div>
+                    <div class="daisy-petal"></div>
+                    <div class="daisy-petal"></div>
+                    <div class="daisy-petal"></div>
+                    <div class="daisy-petal"></div>
+                    <div class="daisy-petal"></div>
+                    <div class="daisy-center"></div>
+                </div>
+            </div>
+            
+            <!-- More roses -->
+            <div class="flower flower4">
+                <div class="rose">
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-petal"></div>
+                    <div class="rose-center"></div>
+                </div>
+            </div>
+            
+            <div class="flower flower5">
+                <div class="tulip">
+                    <div class="tulip-petal"></div>
+                    <div class="tulip-petal"></div>
+                    <div class="tulip-petal"></div>
+                </div>
+            </div>
+            
+            <!-- Leaves -->
+            <div class="leaf leaf1" style="--initial-rotation: 45deg;"></div>
+            <div class="leaf leaf2" style="--initial-rotation: -30deg;"></div>
+            <div class="leaf leaf3" style="--initial-rotation: 60deg;"></div>
         </div>
-        <div class="click-hint" id="clickHint">Click to open</div>
-        <button class="reset-btn" id="resetBtn" onclick="resetEnvelope(event)">Close Letter</button>
+
+        <div class="envelope-container" onclick="openEnvelope()">
+            <div class="envelope" id="envelope">
+                <div class="envelope-flap" id="flap"></div>
+                <div class="envelope-name" id="envelopeName">Shany ❤️</div>
+                <div class="letter" id="letter">
+                    <div class="letter-content">
+                        <h2>Ma belle demoiselle,</h2>
+                        <p>Je voulais te faire une petite surprise car je suis conscient d'être souvent raleur mais je voulais également te rappeler toutes les bonnes choses que tu fais pour nous.</p>
+                        <p>Te voir sourire et heureuse me rend très fier de toi et tout ce que tu as mis en oeuvre pour vivre au mieux ce voyage.</p>
+                        <p>Tu es un exemple de joie de vivre, tu vis le moment présent comme personne. J'ai énormément d'admiration pour toi pour cela.</p>
+                        <p>Malgré la distance, je suis toujours là pour toi, je veux être ton pilier et que tu puisses compter sur moi à n'importe quel moment.</p>
+                        <p>Je pourrais énumerer bon nombre de tes qualités même si je pense que tu connais déjà la plupart.</p>
+                        <p>Ta beauté est divine, ajouté à cela un bronzage de fou et on obtient sans aucun doute la plus belle femme de l'univers.</p>
+                        <p>Je sais que tu fais au mieux pour profiter à fond de ton voyage tout en me gardant dans un coin de ta tête.
+                            Alors oui, forcément, une telle distance et un tel contexte n'est pas forcément le plus facile pour un couple.
+                            Malgré tout, je trouve que l'on s'en sort très bien. Alors oui, ce n'est pas évident tous les jours surtout au début,
+                            mais je suis ravi que l'on puisse construire une brique supplémentaire de notre merveilleux couple.
+                        </p>
+                        <p>Je ne veux pas que tu imagines que cette lettre doit t'obliger à faire plus pour moi, pas du tout. 
+                            Fais de ton mieux comme tu le fais au quotidien tout en profitant de chaque instant de ton voyage.</p>
+                        <p>Te voir sourire et heureuse me rend très fier de toi et tout ce que tu as mis en oeuvre pour vivre au mieux ce voyage.</p>
+                        <p>Te voir sourire et heureuse me rend très fier de toi et tout ce que tu as mis en oeuvre pour vivre au mieux ce voyage.</p>
+                        <p>Te voir sourire et heureuse me rend très fier de toi et tout ce que tu as mis en oeuvre pour vivre au mieux ce voyage.</p>
+                        <p>I am grateful for every day we share together, and I look forward to all the adventures that await us.</p>
+                        <div class="signature">Forever yours ❤️</div>
+                    </div>
+                </div>
+                <div class="heart heart1" id="heart1">♥</div>
+                <div class="heart heart2" id="heart2">♥</div>
+                <div class="heart heart3" id="heart3">♥</div>
+                <div class="heart heart4" id="heart4">♥</div>
+            </div>
+            <div class="click-hint" id="clickHint">Click to open</div>
+            <button class="reset-btn" id="resetBtn" onclick="resetEnvelope(event)">Close Letter</button>
+        </div>
     </div>
 
     <script>
